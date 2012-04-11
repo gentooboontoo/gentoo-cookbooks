@@ -1,9 +1,11 @@
-default[:gentoo][:profile] = case node[:kernel][:machine]
+default[:gentoo][:arch] = case node[:kernel][:machine]
   when "x86_64"
-    "default/linux/amd64/10.0"
+    "amd64"
   else
-    "default/linux/#{node[:kernel][:machine]}/10.0"
+    node[:kernel][:machine]
   end
+
+default[:gentoo][:profile] = "default/linux/#{node[:gentoo][:arch]}/10.0"
 
 default[:gentoo][:use_flags] = [
   "-*", "berkdb", "bzip2", "cracklib", "crypt", "cxx", "fam", "gdbm",
