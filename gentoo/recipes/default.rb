@@ -1,13 +1,12 @@
 include_recipe "gentoo::portage"
 
-template "/etc/conf.d/clock" do
-  source "clock.confd.erb"
+template "/etc/conf.d/hwclock" do
+  source "hwclock.confd.erb"
   owner "root"
   group "root"
   mode "0644"
   variables(
     :hwtimezone => node[:gentoo][:hwtimezone] == "UTC" ? "UTC" : "local",
-    :timezone => node[:gentoo][:timezone],
     :synchwclock => node[:gentoo][:synchwclock]
   )
 end
