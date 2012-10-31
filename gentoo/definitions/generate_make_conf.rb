@@ -1,6 +1,6 @@
 define :generate_make_conf do
-  Chef::Log.debug("Generating /etc/make.conf: #{params[:name]}")
-  template "/etc/make.conf" do
+  Chef::Log.debug("Generating /etc/portage/make.conf: #{params[:name]}")
+  template "/etc/portage/make.conf" do
     source "make.conf.erb"
     cookbook "gentoo"
     owner "root"

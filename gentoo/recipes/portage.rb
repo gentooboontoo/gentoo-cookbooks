@@ -1,6 +1,6 @@
 include_recipe "eix"
 
-link "/etc/make.profile" do
+link "/etc/portage/make.profile" do
   to "../../usr/portage/profiles/#{node[:gentoo][:profile]}"
 end
 
