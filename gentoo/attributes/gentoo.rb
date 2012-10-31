@@ -7,18 +7,12 @@ default[:gentoo][:arch] = case node[:kernel][:machine]
 
 default[:gentoo][:profile] = "default/linux/#{node[:gentoo][:arch]}/10.0"
 
-default[:gentoo][:use_flags] = [
-  "-*", "berkdb", "bzip2", "cracklib", "crypt", "cxx", "fam", "gdbm",
-  "glibc-omitfp", "gnutls", "iconv", "idn", "mmx", "modules", "mudflap",
-  "multilib", "ncurses", "nls", "nptl", "nptlonly", "openmp", "pam",
-  "pcre", "posix", "readline", "ruby", "sse", "sse2", "ssl", "sysfs",
-  "sysvipc", "threads", "threadsafe", "unicode", "urandom", "xml", "zlib"
-]
+default[:gentoo][:use_flags] = []
 
-default[:gentoo][:cflags] = "-march=native -O2 -pipe"
+default[:gentoo][:cflags] = ["-march=native", "-O2", "-pipe"]
 default[:gentoo][:makeopts] = "-j#{node[:cpu][:total].to_i+1}"
 
-default[:gentoo][:portage_features] = %w(sandbox sfperms strict buildpkg parallel-fetch)
+default[:gentoo][:portage_features] = %w(strict buildpkg)
 default[:gentoo][:emerge_options] = ["--verbose"] # + ["--jobs=3", "--load-average=3"]
 default[:gentoo][:overlay_directories] = []
 default[:gentoo][:collision_ignores] = []
@@ -28,7 +22,7 @@ default[:gentoo][:use_expands] = {}
 default[:gentoo][:elog_mailuri] = "" # "foo@example.com smtp.example.com"
 default[:gentoo][:elog_mailfrom] = "portage@#{node[:fqdn]}"
 default[:gentoo][:rsync_mirror] = "rsync://rsync.gentoo.org/gentoo-portage"
-default[:gentoo][:distfile_mirrors] = ["http://gentoo.osuosl.org/"]
+default[:gentoo][:distfile_mirrors] = []
 default[:gentoo][:portage_binhost] = ""
 
 default[:gentoo][:hwtimezone] = "UTC" # "local"
