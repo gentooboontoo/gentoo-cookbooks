@@ -127,7 +127,7 @@ attribute "gentoo/locales",
   :display_name => "locale.gen",
   :description  => "Locales to generate",
   :type         => "array",
-  :default      => ["en_US ISO-8859-1", "en_US.UTF-8 UTF-8"]
+  :default      => ["en_US.UTF-8 UTF-8"]
 
 attribute "gentoo/sysctl",
   :display_name => "sysctl.conf",
