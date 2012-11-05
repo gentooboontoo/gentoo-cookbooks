@@ -46,4 +46,10 @@ end
     group "portage"
     mode "0770"
   end
+
+
+  if  node[:gentoo][:portage_features].include?("installsources")
+    include_recipe "debugedit"
+  end
+
 end
