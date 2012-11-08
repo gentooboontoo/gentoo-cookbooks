@@ -5,5 +5,4 @@ description      "Installs debugedit"
 version          "0.0.1"
 recipe           "debugedit", "Installs debugedit"
 supports         "gentoo"
-depends          "gentoo"
 
