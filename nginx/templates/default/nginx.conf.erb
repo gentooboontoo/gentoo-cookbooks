@@ -16,7 +16,7 @@ http {
 		'$remote_addr - $remote_user [$time_local] '
 		'"$request" $status $bytes_sent '
 		'"$http_referer" "$http_user_agent" '
-		'"$gzip_ratio"';
+		'"$gzip_ratio" <%= @log_format_custom_parameters %>';
 
 	client_header_timeout 10m;
 	client_body_timeout 10m;
@@ -41,8 +41,8 @@ http {
 
 <% unless ["no", "false", "off", "0", ""].include?(@keepalive_timeout.to_s) -%>
 	keepalive_timeout <%= @keepalive_timeout %>;
-
 <% end -%>
+
 	ignore_invalid_headers on;
 
 	index index.html;
@@ -51,13 +51,11 @@ http {
 
 <% if %w(yes true on 1).include?(@passenger.to_s) -%>
 	passenger_root /usr/libexec/passenger;
-
 <% end -%>
-	include /etc/nginx/vhosts.d/*.conf;
 
 	#server {
 	#	listen 127.0.0.1;
-	#	server_name localhost;
+	# server_name localhost;
 
 	#	access_log /var/log/nginx/localhost.access_log main;
 	#	error_log /var/log/nginx/localhost.error_log info;
@@ -79,4 +77,7 @@ http {
 
 	#	root /var/www/localhost/htdocs;
 	#}
+
+	include /etc/nginx/vhosts.d/*.conf;
 }
+

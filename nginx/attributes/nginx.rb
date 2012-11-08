@@ -4,3 +4,4 @@ default[:nginx][:keepalive_timeout] = "75 20"
 default[:nginx][:ports] = []
 default[:nginx][:fcgi_php] = false
 default[:nginx][:passenger] = false
+default[:nginx][:log_format_custom_parameters] = []

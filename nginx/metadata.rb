@@ -4,8 +4,8 @@ license          "Apache 2.0"
 description      "Installs and configures Nginx"
 version          "0.1"
 supports         "gentoo"
-depends          "openssl"
-depends          "php"
+#depends          "openssl"
+#depends          "php"
 
 attribute "nginx/worker_processes",
   :display_name => "Worker Processes",

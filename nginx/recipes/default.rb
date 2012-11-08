@@ -1,14 +1,7 @@
-include_recipe "openssl::host_cert"
-include_recipe "gentoo::portage"
-
-gentoo_package_keywords "=www-servers/nginx-0.8.38-r1"
-gentoo_package_keywords "=app-vim/nginx-syntax-0.3.1" if node.run_list?("recipe[vim]")
-
-nginx_modules = [
-  "access", "auth_basic", "autoindex", "browser", "charset", "empty_gif",
-  "gzip", "limit_req", "limit_zone", "map", "proxy", "referer", "rewrite",
-  "upstream_ip_hash", "userid"
-]
+nginx_modules = %w(access auth_basic autoindex browser charset empty_gif
+                   fastcgi geo gzip limit_req limit_zone map memcached
+                   proxy referer rewrite scgi split_clients ssi
+                   upstream_ip_hash userid uwsgi)
 
 if %w(yes true on 1).include?(node[:nginx][:fcgi_php].to_s)
   nginx_modules << "fastcgi"
@@ -44,8 +37,6 @@ unless current_modules == nginx_modules.sort
   generate_make_conf "NGINX_MODULES_HTTP changed"
 end
 
-gentoo_package_use "www-servers/nginx http http-cache pcre ssl"
-
 package "www-servers/nginx" do
   action :upgrade
 end
@@ -64,7 +55,9 @@ template "/etc/nginx/nginx.conf" do
     :worker_processes => node[:nginx][:worker_processes],
     :worker_connections => node[:nginx][:worker_connections],
     :keepalive_timeout => node[:nginx][:keepalive_timeout],
-    :passenger => node[:nginx][:passenger]
+    :passenger => node[:nginx][:passenger],
+    :log_format_custom_parameters =>
+      node[:nginx][:log_format_custom_parameters].join(" ")
   )
 end
 
@@ -93,9 +86,9 @@ service "nginx" do
   action [ :enable, :start ]
   subscribes :reload, resources(:template => "/etc/nginx/nginx.conf")
   subscribes :restart, resources(:package => "www-servers/nginx")
-  unless node[:ssl][:self_signed_host_cert]
-    subscribes :reload, resources(:cookbook_file => "/etc/ssl/private/#{node[:fqdn]}.pem", :cookbook_file => "/etc/ssl/private/#{node[:fqdn]}.key")
-  end
+  #unless node[:ssl][:self_signed_host_cert]
+    #subscribes :reload, resources(:cookbook_file => "/etc/ssl/private/#{node[:fqdn]}.pem", :cookbook_file => "/etc/ssl/private/#{node[:fqdn]}.key")
+  #end
 end
 
 if node.run_list?("recipe[logrotate]")
