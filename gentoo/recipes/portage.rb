@@ -48,7 +48,7 @@ end
   end
 
 
-  if  node[:gentoo][:portage_features].include?("installsources")
+  if node[:gentoo][:portage_features].include?("installsources")
     include_recipe "debugedit"
   end
 
