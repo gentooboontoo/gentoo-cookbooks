@@ -1,9 +1,19 @@
-define :nginx_site, :action => :enable, :default => false,
-  :template => "nginx_site.conf.erb", :cookbook => "nginx", :variables => {},
-  :server_alias => nil, :docroot => nil, :manage_docroot => true,
-  :owner => "root", :group => "root", :mode => "755",
-  :ssl => true, :ssl_pem => nil, :ssl_key => nil,
-  :passenger => false, :php => nil do
+define :nginx_site, :action => :enable,
+                    :default => false,
+                    :template => "nginx_site.conf.erb",
+                    :cookbook => "nginx",
+                    :variables => {},
+                    :server_alias => nil,
+                    :docroot => nil,
+                    :manage_docroot => true,
+                    :owner => "root",
+                    :group => "root",
+                    :mode => "755",
+                    :ssl => true,
+                    :ssl_pem => nil,
+                    :ssl_key => nil,
+                    :passenger => false,
+                    :php => nil do
 
   set_iptables = false
 
