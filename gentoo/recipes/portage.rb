@@ -47,9 +47,8 @@ end
     mode "0770"
   end
 
+end
 
-  if node[:gentoo][:portage_features].include?("installsources")
-    include_recipe "debugedit"
-  end
-
+if node[:gentoo][:portage_features].include?("installsources")
+  include_recipe "debugedit"
 end
