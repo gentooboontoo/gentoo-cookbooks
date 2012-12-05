@@ -5,5 +5,5 @@ end
 
 package "app-portage/eix" do
   action :upgrade
-  notifies :run, resources(:execute => "eix-update")
+  notifies :run, "execute[eix-update]", :immediately
 end
