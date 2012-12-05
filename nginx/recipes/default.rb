@@ -33,7 +33,7 @@ end
 
 current_modules = (node[:gentoo][:use_expands][:nginx_modules_http] || []).sort
 unless current_modules == nginx_modules.sort
-  node[:gentoo][:use_expands][:nginx_modules_http] = nginx_modules.sort
+  node.default[:gentoo][:use_expands][:nginx_modules_http] = nginx_modules.sort
   generate_make_conf "NGINX_MODULES_HTTP changed"
 end
 
