@@ -5,7 +5,7 @@ default[:gentoo][:arch] = case node[:kernel][:machine]
     node[:kernel][:machine]
   end
 
-default[:gentoo][:profile] = "default/linux/#{node[:gentoo][:arch]}/10.0"
+default[:gentoo][:profile] = "default/linux/#{node[:gentoo][:arch]}/13.0"
 
 default[:gentoo][:use_flags] = []
 
