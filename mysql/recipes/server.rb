@@ -6,7 +6,7 @@ gentoo_package_use "dev-db/mysql latin1" do
 end
 
 package "dev-db/mysql" do
-  action :upgrade
+  action :install
 end
 
 # TODO mysql master/slave configuration

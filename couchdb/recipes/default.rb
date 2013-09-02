@@ -1,5 +1,5 @@
 package "dev-db/couchdb" do
-  action :upgrade
+  action :install
 end
 
 service "couchdb" do

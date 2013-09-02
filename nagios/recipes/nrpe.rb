@@ -1,10 +1,10 @@
 gentoo_package "net-analyzer/nagios-plugins" do
-  action :upgrade
+  action :install
   use node[:nagios][:nrpe][:use]
 end
 
 package "net-analyzer/nagios-nrpe" do
-  action :upgrade
+  action :install
 end
 
 # on hardened systems only users in the wheel group are able to see other

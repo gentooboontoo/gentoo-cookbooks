@@ -12,7 +12,7 @@ if %w(yes true on 1).include?(node[:nginx][:fcgi_php].to_s)
   gentoo_package_keywords "=www-servers/spawn-fcgi-1.6.3"
 
   package "www-servers/spawn-fcgi" do
-    action :upgrade
+    action :install
   end
 
   cookbook_file "/etc/conf.d/spawn-fcgi.php" do
@@ -38,7 +38,7 @@ unless current_modules == nginx_modules.sort
 end
 
 package "www-servers/nginx" do
-  action :upgrade
+  action :install
 end
 
 group "ssl" do

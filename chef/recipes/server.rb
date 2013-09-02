@@ -56,7 +56,7 @@ end
 
 %w(chef-solr chef-server-api chef-server).each { |p|
   package "app-admin/#{p}" do
-    action :upgrade
+    action :install
   end
 }
 

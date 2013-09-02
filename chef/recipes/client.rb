@@ -19,7 +19,7 @@ gentoo_package_keywords "=dev-ruby/systemu-1.2.0"
 gentoo_package_keywords "=dev-ruby/uuidtools-2.1.1-r1"
 
 package "app-admin/chef" do
-  action :upgrade
+  action :install
 end
 
 if node.run_list?("recipe[chef::server]")
@@ -34,7 +34,7 @@ end
 
 if %w(yes true on 1).include?(node[:chef][:syslog].to_s)
   gentoo_package "dev-ruby/SyslogLogger" do
-    action :upgrade
+    action :install
     keywords "=dev-ruby/SyslogLogger-1.4.0"
   end
 elsif node.run_list?("recipe[logrotate]")

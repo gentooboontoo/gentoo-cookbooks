@@ -8,7 +8,7 @@ end
 
 unless node.run_list?("recipe[mysql::server]")
   gentoo_package "dev-db/mysql" do
-    action :upgrade
+    action :install
     use "minimal"
   end
 end
@@ -20,7 +20,7 @@ end
 # Gem.clear_paths
 
 gentoo_package "dev-ruby/mysql-ruby" do
-  action :upgrade
+  action :install
 end
 
 # set node[:mysql][:root_password] to "" and we'll generate and store the

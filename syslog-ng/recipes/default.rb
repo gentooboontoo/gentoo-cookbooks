@@ -6,7 +6,7 @@ unless node[:gentoo][:use_flags].include?("syslog")
 end
 
 package "app-admin/syslog-ng" do
-  action :upgrade
+  action :install
 end
 
 cookbook_file "/etc/syslog-ng/syslog-ng.conf" do

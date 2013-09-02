@@ -1,5 +1,5 @@
 package "app-admin/monit" do
-  action :upgrade
+  action :install
 end
 
 directory "/etc/monit.d" do

@@ -3,7 +3,7 @@ gentoo_package "mail-mta/ssmtp" do
 end
 
 gentoo_package "mail-mta/msmtp" do
-  action :upgrade
+  action :install
 end
 
 template "/etc/msmtprc" do

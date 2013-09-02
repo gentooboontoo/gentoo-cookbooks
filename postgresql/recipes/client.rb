@@ -1,3 +1,3 @@
 package "dev-db/postgresql-base" do
-  action :upgrade
+  action :install
 end

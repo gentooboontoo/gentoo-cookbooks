@@ -1,5 +1,5 @@
 package "net-misc/openntpd" do
-  action :upgrade
+  action :install
 end
 
 template "/etc/ntpd.conf" do

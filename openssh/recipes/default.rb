@@ -1,5 +1,5 @@
 package "net-misc/openssh" do
-  action :upgrade
+  action :install
 end
 
 template "/etc/ssh/sshd_config" do

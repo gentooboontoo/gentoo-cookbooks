@@ -1,7 +1,7 @@
 gentoo_package_keywords "=app-admin/chef-server-webui-0.8.16"
 
 package "app-admin/chef-server-webui" do
-  action :upgrade
+  action :install
 end
 
 template "/etc/chef/webui.rb" do

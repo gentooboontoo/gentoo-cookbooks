@@ -1,5 +1,5 @@
 package "sys-process/vixie-cron" do
-  action :upgrade
+  action :install
 end
 
 service "vixie-cron" do

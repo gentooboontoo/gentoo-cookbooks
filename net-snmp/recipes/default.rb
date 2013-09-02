@@ -8,7 +8,7 @@ end
 gentoo_package_use "net-analyzer/net-snmp diskio"
 
 package "net-analyzer/net-snmp" do
-  action :upgrade
+  action :install
 end
 
 template "/etc/snmp/snmpd.conf" do

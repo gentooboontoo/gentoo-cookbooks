@@ -6,5 +6,5 @@ unless node[:gentoo][:use_flags].include?("bash-completion")
 end
 
 gentoo_package "app-shells/bash-completion" do
-  action :upgrade
+  action :install
 end

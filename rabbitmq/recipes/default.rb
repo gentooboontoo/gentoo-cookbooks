@@ -3,7 +3,7 @@ include_recipe "gentoo::portage"
 gentoo_package_keywords "=net-misc/rabbitmq-server-1.8.0"
 
 package "net-misc/rabbitmq-server" do
-  action :upgrade
+  action :install
 end
 
 service "rabbitmq" do

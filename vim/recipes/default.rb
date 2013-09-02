@@ -6,6 +6,6 @@ unless node[:gentoo][:use_flags].include?("vim-syntax")
 end
 
 gentoo_package "app-editors/vim" do
-  action :upgrade
+  action :install
   use "vim-pager"
 end

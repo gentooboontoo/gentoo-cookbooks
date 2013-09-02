@@ -1,7 +1,7 @@
 include_recipe "gentoo::portage"
 
 gentoo_package "app-admin/sudo" do
-  action :upgrade
+  action :install
   use %w(-ldap pam)
 end
 
