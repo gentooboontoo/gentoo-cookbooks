@@ -1,7 +1,7 @@
 include_recipe "gentoo::portage"
 
 unless node[:gentoo][:use_flags].include?("syslog")
-  node[:gentoo][:use_flags] << "syslog"
+  node.default[:gentoo][:use_flags] << "syslog"
   generate_make_conf "added syslog USE flag"
 end
 
