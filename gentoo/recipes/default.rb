@@ -52,6 +52,11 @@ directory "/tmp" do
   mode "1777"
 end
 
+execute "env-update" do
+  command "/usr/sbin/env-update"
+  action :nothing
+end
+
 execute "locale-gen" do
   command "/usr/sbin/locale-gen"
   action :nothing
@@ -64,6 +69,15 @@ template "/etc/locale.gen" do
   mode "0644"
   variables(:locales => node[:gentoo][:locales])
   notifies :run, resources(:execute => "locale-gen")
+end
+
+template "/etc/env.d/02locale" do
+  source "02locale.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  variables(:lang => node[:gentoo][:lang])
+  notifies :run, "execute[env-update]"
 end
 
 execute "sysctl_reload" do

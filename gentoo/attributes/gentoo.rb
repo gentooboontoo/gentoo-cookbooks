@@ -30,6 +30,7 @@ default[:gentoo][:timezone] = "UTC" # "Europe/Budapest"
 default[:gentoo][:synchwclock] = true # false
 
 default[:gentoo][:locales] = ["en_US.UTF-8 UTF-8"]
+default[:gentoo][:lang] = "en_US.UTF-8"
 
 default[:gentoo][:sysctl] = {
   "kernel.panic" => 60,
